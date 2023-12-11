@@ -3,6 +3,9 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Components/CapsuleComponent.h"
+#include "Components/StaticMeshComponent.h"
+#include "Components/SceneComponent.h"
 #include "GameFramework/Pawn.h"
 #include "BasePawn.generated.h"
 
@@ -18,6 +21,19 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+private:
+	/**
+	 * Constructer actor components
+	 */
+	UPROPERTY(EditAnywhere)
+	class UCapsuleComponent* CapsuleComponent;
+	UPROPERTY(EditAnywhere)
+	UStaticMeshComponent* BaseMesh;
+	UPROPERTY(EditAnywhere)
+	UStaticMeshComponent* TurretMesh;
+	UPROPERTY(EditAnywhere)
+	USceneComponent* ProjectileSpawnPoint;
 
 public:	
 	// Called every frame
