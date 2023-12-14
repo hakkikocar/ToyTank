@@ -26,13 +26,13 @@ private:
 	/**
 	 * Constructer actor components
 	 */
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Components" ,meta=(AllowPrivateAccess=true)) 
 	class UCapsuleComponent* CapsuleComponent;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Components" ,meta=(AllowPrivateAccess=true))
 	UStaticMeshComponent* BaseMesh;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Components" ,meta=(AllowPrivateAccess=true))
 	UStaticMeshComponent* TurretMesh;
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Components" ,meta=(AllowPrivateAccess=true))
 	USceneComponent* ProjectileSpawnPoint;
 
 public:	
