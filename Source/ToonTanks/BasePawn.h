@@ -28,10 +28,13 @@ private:
 	 */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Components" ,meta=(AllowPrivateAccess=true)) 
 	class UCapsuleComponent* CapsuleComponent;
+	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Components" ,meta=(AllowPrivateAccess=true))
 	UStaticMeshComponent* BaseMesh;
+	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Components" ,meta=(AllowPrivateAccess=true))
 	UStaticMeshComponent* TurretMesh;
+	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Components" ,meta=(AllowPrivateAccess=true))
 	USceneComponent* ProjectileSpawnPoint;
 
