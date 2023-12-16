@@ -31,8 +31,15 @@ private:
 	UPROPERTY(EditAnywhere, Category="Components")
 	class USpringArmComponent* SpringArm;
 
+	void Move(float Value);
+
+	void Turn(float Value);
+
 
 public:
 	virtual void Tick(float DeltaSeconds) override;
+
+	// Called to bind functionality to input
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	
 };
