@@ -35,6 +35,12 @@ private:
 
 	void Turn(float Value);
 
+	UPROPERTY(EditAnywhere, Category="Movement")
+	float Speed= 400;
+
+	UPROPERTY(EditAnywhere, Category="Movement")
+	float TurnRate=45;
+
 
 public:
 	virtual void Tick(float DeltaSeconds) override;

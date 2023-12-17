@@ -2,8 +2,7 @@
 
 
 #include "Tank.h"
-
-#include "Kismet/KismetSystemLibrary.h"
+#include "Kismet/GameplayStatics.h"
 
 ATank::ATank()
 {
@@ -32,15 +31,15 @@ void ATank::BeginPlay()
 void ATank::Move(float Value)
 {
 	FVector DeltaLocation= FVector::ZeroVector;
-	DeltaLocation.X=Value;
-	AddActorLocalOffset(DeltaLocation);
+	DeltaLocation.X=Value*Speed*UGameplayStatics::GetWorldDeltaSeconds(this);
+	AddActorLocalOffset(DeltaLocation,true);
 }
 
 void ATank::Turn(float Value)
 {
-	FVector DeltaLocation;
-	DeltaLocation.Y=Value;
-	AddActorLocalOffset(DeltaLocation);
+	FRotator DeltaRotation= FRotator::ZeroRotator;
+	DeltaRotation.Yaw=Value* TurnRate*UGameplayStatics::GetWorldDeltaSeconds(this);
+	AddActorLocalRotation(DeltaRotation,true);
 }
 
 
