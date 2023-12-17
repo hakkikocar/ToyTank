@@ -3,7 +3,9 @@
 
 #include "Tank.h"
 #include "Kismet/GameplayStatics.h"
+#include "GameFramework/PlayerController.h"
 
+//Generate constructer function
 ATank::ATank()
 {
 	PrimaryActorTick.bCanEverTick = true;
@@ -15,6 +17,7 @@ ATank::ATank()
 	Camera->SetupAttachment(SpringArm);
 }
 
+//Binding input axis
 void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
@@ -23,11 +26,15 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAxis(TEXT("Turn"), this, &ATank::Turn);
 }
 
+//begin play
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
+	PlayerControllerRef=Cast<APlayerController>(GetController());
+	
 }
 
+//Tank Move Forward
 void ATank::Move(float Value)
 {
 	FVector DeltaLocation= FVector::ZeroVector;
@@ -35,6 +42,7 @@ void ATank::Move(float Value)
 	AddActorLocalOffset(DeltaLocation,true);
 }
 
+//Tank Turn Rate
 void ATank::Turn(float Value)
 {
 	FRotator DeltaRotation= FRotator::ZeroRotator;
@@ -43,10 +51,6 @@ void ATank::Turn(float Value)
 }
 
 
-void ATank::Tick(float DeltaSeconds)
-{
-	Super::Tick(DeltaSeconds);
-}
 
 
 

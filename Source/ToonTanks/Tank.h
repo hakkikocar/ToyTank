@@ -18,9 +18,12 @@ class TOONTANKS_API ATank : public ABasePawn
 
 public:
 	ATank();
-
+	
+// Called to bind functionality to input
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 protected:
+	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
 
@@ -41,11 +44,5 @@ private:
 	UPROPERTY(EditAnywhere, Category="Movement")
 	float TurnRate=45;
 
-
-public:
-	virtual void Tick(float DeltaSeconds) override;
-
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-	
+	APlayerController* PlayerControllerRef;
 };
