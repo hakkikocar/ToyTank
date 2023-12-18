@@ -4,6 +4,8 @@
 #include "Tank.h"
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/PlayerController.h"
+#include "DrawDebugHelpers.h"
+#include "Systems/MovieSceneQuaternionInterpolationRotationSystem.h"
 
 //Generate constructer function
 ATank::ATank()
@@ -32,6 +34,23 @@ void ATank::BeginPlay()
 	Super::BeginPlay();
 	PlayerControllerRef=Cast<APlayerController>(GetController());
 	
+}
+
+//Tick
+void ATank::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	if (PlayerControllerRef)
+	{
+		FHitResult HitResult;
+		PlayerControllerRef->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility,
+			false,
+			HitResult);
+		FVector MouseLocation=HitResult.ImpactPoint;
+		DrawDebugSphere(GetWorld(),MouseLocation,10,10,FColor::Blue,false,-1.f);
+		RotateTurret(MouseLocation);
+	}
 }
 
 //Tank Move Forward

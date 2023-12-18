@@ -18,7 +18,8 @@ public:
 	// Sets default values for this pawn's properties
 	ABasePawn();
 
-
+protected:
+	void RotateTurret(FVector LookAtTarget);
 
 private:
 	/**
@@ -34,9 +35,5 @@ private:
 	UStaticMeshComponent* TurretMesh;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Components" ,meta=(AllowPrivateAccess=true))
-	USceneComponent* ProjectileSpawnPoint;
-
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	USceneComponent* ProjectileSpawnPoint;	
 };
