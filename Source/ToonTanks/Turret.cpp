@@ -24,9 +24,6 @@ void ATurret::Tick(float DeltaTime)
         		RotateTurret(Tank->GetActorLocation());
         	}
 	}
-
-	
-	
 }
 
 void ATurret::BeginPlay()

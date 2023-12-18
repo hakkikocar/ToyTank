@@ -5,7 +5,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/PlayerController.h"
 #include "DrawDebugHelpers.h"
-#include "Systems/MovieSceneQuaternionInterpolationRotationSystem.h"
+#include "BasePawn.h"
 
 //Generate constructer function
 ATank::ATank()
@@ -26,6 +26,7 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 	PlayerInputComponent->BindAxis(TEXT("MoveForward"),this, &ATank::Move);
 	PlayerInputComponent->BindAxis(TEXT("Turn"), this, &ATank::Turn);
+	PlayerInputComponent->BindAction("Fire",IE_Pressed, this, &ATank::Fire);
 }
 
 //begin play
@@ -68,6 +69,8 @@ void ATank::Turn(float Value)
 	DeltaRotation.Yaw=Value* TurnRate*UGameplayStatics::GetWorldDeltaSeconds(this);
 	AddActorLocalRotation(DeltaRotation,true);
 }
+
+
 
 
 
