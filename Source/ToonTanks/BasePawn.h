@@ -41,4 +41,5 @@ private:
 
 	UPROPERTY(EditAnywhere, Category="Combat")
 	TSubclassOf<class AProjectile> ProjectileClass;
+
 };

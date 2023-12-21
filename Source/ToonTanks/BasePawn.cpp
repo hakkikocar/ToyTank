@@ -23,6 +23,7 @@ ABasePawn::ABasePawn()
 	
 	ProjectileSpawnPoint=CreateDefaultSubobject<USceneComponent>(TEXT("projectile Spawn Point"));
 	ProjectileSpawnPoint->SetupAttachment(TurretMesh);
+	
 }
 
 void ABasePawn::RotateTurret(FVector LookAtTarget)
