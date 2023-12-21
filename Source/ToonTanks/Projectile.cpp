@@ -12,7 +12,10 @@ AProjectile::AProjectile()
 	ProjectileMesh=CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Prjectile Mesh"));
 	RootComponent=ProjectileMesh;
 
-	ProjectileMovement=CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Projectile Movement"));
+	UprojectileMovementComponent= CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Projectile Movement Component"));
+
+	UprojectileMovementComponent->InitialSpeed = InitialSpeed;
+	UprojectileMovementComponent->MaxSpeed = MaxSpeed;
 
 }
 
@@ -20,6 +23,8 @@ AProjectile::AProjectile()
 void AProjectile::BeginPlay()
 {
 	Super::BeginPlay();
+
+	
 	
 }
 
