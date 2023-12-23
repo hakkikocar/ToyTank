@@ -33,7 +33,7 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
-	PlayerControllerRef=Cast<APlayerController>(GetController());
+	TankPlayerController=Cast<APlayerController>(GetController());
 	
 }
 
@@ -42,16 +42,23 @@ void ATank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (PlayerControllerRef)
+	if (TankPlayerController)
 	{
 		FHitResult HitResult;
-		PlayerControllerRef->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility,
+		TankPlayerController->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility,
 			false,
 			HitResult);
 		FVector MouseLocation=HitResult.ImpactPoint;
 		DrawDebugSphere(GetWorld(),MouseLocation,10,10,FColor::Blue,false,-1.f);
 		RotateTurret(MouseLocation);
 	}
+}
+
+void ATank::HandleDestruction()
+{
+	Super::HandleDestruction();
+	SetActorHiddenInGame(true);
+	SetActorTickEnabled(false);
 }
 
 //Tank Move Forward

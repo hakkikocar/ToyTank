@@ -22,12 +22,17 @@ void ATurret::Tick(float DeltaTime)
 	}
 }
 
+void ATurret::HandleDestruction()
+{
+	Super::HandleDestruction();
+	Destroy();
+}
+
 void ATurret::BeginPlay()
 {
 	Super::BeginPlay();
 
 	Tank= Cast<ATank>(UGameplayStatics::GetPlayerPawn(this,0));
-	UE_LOG(LogTemp,Display,TEXT("distance içinde %s"),*Tank->GetName());
 	GetWorldTimerManager().SetTimer(FireRateTimerHandle,this,&ATurret::CheckFireCondition,FireRate,true);
 }
 
