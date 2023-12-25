@@ -49,7 +49,6 @@ void ATank::Tick(float DeltaTime)
 			false,
 			HitResult);
 		FVector MouseLocation=HitResult.ImpactPoint;
-		DrawDebugSphere(GetWorld(),MouseLocation,10,10,FColor::Blue,false,-1.f);
 		RotateTurret(MouseLocation);
 	}
 }
