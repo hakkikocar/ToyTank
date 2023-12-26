@@ -6,6 +6,7 @@
 #include "Tank.h"
 #include "ToonTankPlayerController.h"
 #include "Turret.h"
+#include "Blueprint/UserWidget.h"
 
 void AToonTanksGameMode::ActorDied(AActor* DeatActor)
 {
@@ -28,8 +29,6 @@ void AToonTanksGameMode::BeginPlay()
 	Super::BeginPlay();
 
 	HandleGameStart();
-
-	
 }
 
 void AToonTanksGameMode::HandleGameStart()
@@ -37,6 +36,8 @@ void AToonTanksGameMode::HandleGameStart()
 	Tank = Cast<ATank>(UGameplayStatics::GetPlayerPawn(this,0));
 	ToonTankPlayerController= Cast<AToonTankPlayerController>(UGameplayStatics::GetPlayerController(this,0));
 
+	StartGame();
+	
 	if (ToonTankPlayerController)
 	{
 		ToonTankPlayerController->SetEnablePlayerState(false);
