@@ -2,7 +2,6 @@
 
 
 #include "BasePawn.h"
-
 #include "Projectile.h"
 #include "Kismet/GameplayStatics.h"
 
@@ -28,7 +27,11 @@ ABasePawn::ABasePawn()
 
 void ABasePawn::HandleDestruction()
 {
-	//sound and sound effect
+	// to do sound and visual effect
+	if (DeathParticles)
+	{
+		UGameplayStatics::SpawnEmitterAtLocation(this,DeathParticles,GetActorLocation(),GetActorRotation());
+	}
 }
 
 void ABasePawn::RotateTurret(FVector LookAtTarget)
@@ -43,8 +46,7 @@ void ABasePawn::Fire()
 	FVector Location=ProjectileSpawnPoint->GetComponentLocation();
 	FRotator Rotation= ProjectileSpawnPoint->GetComponentRotation();
 	auto Projectile=GetWorld()->SpawnActor<AProjectile>(ProjectileClass,Location,Rotation);
-	Projectile->SetOwner(this);
-	
+	Projectile->SetOwner(this);	
 }
 
 
